@@ -14,40 +14,92 @@ namespace ASP.LinkedList
 
         public LinkedList()
         {
-            Count = 0;
-            Head = null;
-            Tail = null;
+            this.Count = 0;
+            this.Head = null;
+            this.Tail = null;
         }
 
         public void insertAtStart(T insert)
         {
             LinkedListNode<T> temp = new LinkedListNode<T>(insert);
-            if(Count == 0)
-            {                
-                Tail = temp;
+            if(this.Count == 0)
+            {
+                this.Tail = temp;
             }
             else
             {
-                temp.Next = Head;
+                temp.Next = this.Head;
             }
-            Head = temp;
-            Count++;
+            this.Head = temp;
+            this.Count++;
         }
 
         public void insertAtEnd(T insert)
         {
             LinkedListNode<T> temp = new LinkedListNode<T>(insert);
-            if(Count == 0)
+            if(this.Count == 0)
             {
-                Head = temp;
+                this.Head = temp;
             }
             else
             {
-                Tail.Next = temp;                
+                this.Tail.Next = temp;                
             }
-            Tail = temp;
-            Count--;
+            this.Tail = temp;
+            this.Count++;
         }
+
+        public void removeFromStart()
+        {
+            if (this.Count == 0) return;
+            if (this.Count == 1)
+            {
+                this.Head = null;
+                this.Tail = null;
+            }
+            else
+            {
+                this.Head = this.Head.Next;
+            }
+            this.Count--;
+        }
+
+        public void removeFromEnd()
+        {
+            if (this.Count == 0) return;
+            if (this.Count == 1)
+            {
+                this.Head = null;
+                this.Tail = null;
+            }
+            else
+            {
+                LinkedListNode<T> temp = this.Head;
+                while (temp.Next != this.Tail)
+                {
+                    temp = temp.Next;
+                }
+                this.Tail = temp;
+                this.Tail.Next = null;
+            }
+            this.Count--;
+        }
+
+        public LinkedListNode<T> searchList(T search)
+        {
+            LinkedListNode<T> node = new LinkedListNode<T>(search);
+            LinkedListNode<T> currentNode = this.Head;
+            while (currentNode != null)
+            {
+                if (currentNode.Value.Equals(node.Value))
+                {
+                    return currentNode;
+                }
+                currentNode = currentNode.Next;
+            }
+            return null;
+        }
+
         /*
          * Nema poente za ovim operacijama ukoliko lista moze da sadrzi iste elemente i nije uredjena
         public bool insertAfter(LinkedListNode<T> after, T insert)
@@ -77,19 +129,6 @@ namespace ASP.LinkedList
             return true;
         }
         
-        public bool checkIfExistsInList(LinkedListNode<T> node)
-        {
-            LinkedListNode<T> currentNode = this.Head;
-            while (currentNode!=null)
-            {
-                if(currentNode.isEqual(node))
-                {
-                    return true;
-                }
-                currentNode = currentNode.Next;
-            }
-            return false;
-        }
         */
     }
 }
