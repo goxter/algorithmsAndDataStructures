@@ -11,14 +11,31 @@ namespace ASP
     {
         static void Main(string[] args)
         {
-            ASP.LinkedList.LinkedList<int> lista = new ASP.LinkedList.LinkedList<int>();
-            lista.insertAtStart(2);
-            lista.insertAtStart(1);
-            lista.insertAtEnd(3);
-            lista.insertAtEnd(4);
+            ASP.LinkedList.LinkedList<int> lista1 = new ASP.LinkedList.LinkedList<int>();
+            lista1.insertAtStart(2);
+            lista1.insertAtStart(1);
+            lista1.insertAtEnd(3);
+            lista1.insertAtEnd(4);
+
+            ASP.LinkedList.LinkedList<int> lista2 = new ASP.LinkedList.LinkedList<int>();
+            lista2.insertAtStart(6);
+            lista2.insertAtStart(5);
+            lista2.insertAtEnd(7);
+            lista2.insertAtEnd(8);
+
+            ASP.LinkedList.LinkedList<int> lista;
+            lista = lista1.concatenate(lista2);
+            lista.invert();
+            ASP.LinkedList.LinkedListNode<int> temp = lista.Head;
+            while (temp != null)
+            {
+                Console.WriteLine(temp.Value);
+                temp = temp.Next;
+            }
+            Console.WriteLine("INSERT END");
             //Console.WriteLine(lista.insertAfter(lista.Head, 2));
             //Console.WriteLine(lista.insertBefore(lista.Tail, 3));
-            
+            /*
             ASP.LinkedList.LinkedListNode<int> temp = lista.Head;
             while (temp != null)
             {
@@ -64,6 +81,7 @@ namespace ASP
                 Console.WriteLine("Element ne postoji");
             }
             Console.WriteLine("END");
+            */
         }
     }
 }

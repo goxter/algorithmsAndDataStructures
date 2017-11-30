@@ -100,6 +100,35 @@ namespace ASP.LinkedList
             return null;
         }
 
+        public LinkedList<T> concatenate(LinkedList<T> list)
+        {
+            if (this.Count == 0 && list.Count == 0) return null;
+            if (this.Count == 0) return list;
+            if (list.Count == 0) return this;
+            LinkedList<T> newList = new LinkedList<T>();
+            newList.Head = this.Head;
+            this.Tail.Next = list.Head;
+            newList.Tail = list.Tail;
+            newList.Count = this.Count + list.Count;
+            return newList;
+        }
+
+        public void invert()
+        {
+            if (this.Count == 0) return;
+            LinkedListNode<T> temp1 = this.Head;
+            LinkedListNode<T> temp2 = null;
+            LinkedListNode<T> temp3 = null;
+            while (temp1 != null)
+            {
+                temp3 = temp2;
+                temp2 = temp1;
+                temp1 = temp1.Next;
+                temp2.Next = temp3;                
+            }
+            Head = temp2;
+        }
+
         /*
          * Nema poente za ovim operacijama ukoliko lista moze da sadrzi iste elemente i nije uredjena
         public bool insertAfter(LinkedListNode<T> after, T insert)
