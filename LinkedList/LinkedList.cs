@@ -8,12 +8,13 @@ namespace ASP.LinkedList
 {
     public class LinkedList<T>
     {
-        public LinkedListNode<T> Head { get; set; }
-        public LinkedListNode<T> Tail { get; set; }
-        public int Count { get; set; }
+        public LinkedListNode<T> Head { get; private set; }
+        public LinkedListNode<T> Tail { get; private set; }
+        public int Count { get; private set; }
 
         public LinkedList()
         {
+            Count = 0;
             Head = null;
             Tail = null;
         }
@@ -21,33 +22,34 @@ namespace ASP.LinkedList
         public void insertAtStart(T insert)
         {
             LinkedListNode<T> temp = new LinkedListNode<T>(insert);
-            if (Head == null)
-            {
-                Head = temp;
+            if(Count == 0)
+            {                
                 Tail = temp;
             }
             else
             {
-                temp.Next = Head.Next;
-                Head.Next = temp;
-            }            
+                temp.Next = Head;
+            }
+            Head = temp;
+            Count++;
         }
 
         public void insertAtEnd(T insert)
         {
             LinkedListNode<T> temp = new LinkedListNode<T>(insert);
-            if(Head == null)
+            if(Count == 0)
             {
                 Head = temp;
-                Tail = temp;
             }
             else
             {
-                Tail.Next = temp;
-                Tail = temp;
+                Tail.Next = temp;                
             }
+            Tail = temp;
+            Count--;
         }
-
+        /*
+         * Nema poente za ovim operacijama ukoliko lista moze da sadrzi iste elemente i nije uredjena
         public bool insertAfter(LinkedListNode<T> after, T insert)
         {
             if(!this.checkIfExistsInList(after))
@@ -74,7 +76,7 @@ namespace ASP.LinkedList
             before.Value = insert;
             return true;
         }
-
+        
         public bool checkIfExistsInList(LinkedListNode<T> node)
         {
             LinkedListNode<T> currentNode = this.Head;
@@ -88,5 +90,6 @@ namespace ASP.LinkedList
             }
             return false;
         }
+        */
     }
 }
