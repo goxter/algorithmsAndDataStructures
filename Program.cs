@@ -11,22 +11,26 @@ namespace ASP
     {
         static void Main(string[] args)
         {
-            ASP.LinkedList.LinkedList<int> lista1 = new ASP.LinkedList.LinkedList<int>();
+            ASP.DoblyLinkedList.DoblyLinkedList<int> lista1 = new ASP.DoblyLinkedList.DoblyLinkedList<int>();
+            //ASP.LinkedList.LinkedList<int> lista1 = new ASP.LinkedList.LinkedList<int>();
             lista1.insertAtStart(2);
             lista1.insertAtStart(1);
             lista1.insertAtEnd(3);
             lista1.insertAtEnd(4);
 
-            ASP.LinkedList.LinkedList<int> lista2 = new ASP.LinkedList.LinkedList<int>();
+            ASP.DoblyLinkedList.DoblyLinkedList<int> lista2 = new ASP.DoblyLinkedList.DoblyLinkedList<int>();
+            //ASP.LinkedList.LinkedList<int> lista2 = new ASP.LinkedList.LinkedList<int>();
             lista2.insertAtStart(6);
             lista2.insertAtStart(5);
             lista2.insertAtEnd(7);
             lista2.insertAtEnd(8);
 
-            ASP.LinkedList.LinkedList<int> lista;
+            ASP.DoblyLinkedList.DoblyLinkedList<int> lista;
             lista = lista1.concatenate(lista2);
-            lista.invert();
-            ASP.LinkedList.LinkedListNode<int> temp = lista.Head;
+            //lista.invert();
+            lista.removeFromEnd();
+            lista.removeFromStart();
+            ASP.DoblyLinkedList.DoblyLinkedListNode<int> temp = lista.Head;
             while (temp != null)
             {
                 Console.WriteLine(temp.Value);

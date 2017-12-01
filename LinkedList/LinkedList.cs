@@ -128,36 +128,5 @@ namespace ASP.LinkedList
             }
             Head = temp2;
         }
-
-        /*
-         * Nema poente za ovim operacijama ukoliko lista moze da sadrzi iste elemente i nije uredjena
-        public bool insertAfter(LinkedListNode<T> after, T insert)
-        {
-            if(!this.checkIfExistsInList(after))
-            {
-                return false;
-            }
-
-            LinkedListNode<T> temp = new LinkedListNode<T>(insert);
-            temp.Next = after.Next;
-            after.Next = temp;
-            return true;
-        }
-
-        public bool insertBefore(LinkedListNode<T> before, T insert)
-        {
-            if(!this.checkIfExistsInList(before))
-            {
-                return false;
-            }
-
-            LinkedListNode<T> temp = new LinkedListNode<T>(insert);
-            temp.Next = before.Next;
-            temp.Value = before.Value;
-            before.Value = insert;
-            return true;
-        }
-        
-        */
     }
 }

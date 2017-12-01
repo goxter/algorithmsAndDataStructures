@@ -16,6 +16,7 @@ namespace ASP.LinkedList
             Value = value;
         }
 
+        /*
         public bool isEqual(LinkedListNode<T> node)
         {
             if(EqualityComparer<T>.Default.Equals(this.Value, node.Value) && Object.ReferenceEquals(this.Next, node.Next))
@@ -23,6 +24,6 @@ namespace ASP.LinkedList
                 return true;
             }
             return false;
-        }
+        }*/
     }
 }
